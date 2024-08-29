@@ -7,5 +7,15 @@
 </head>
 <body>
     
+    <script>
+        function arrayExcludesValueToNewArray(originalArray, valueToExclude) {
+    return originalArray.filter(element => element !== valueToExclude);
+       }
+        const originalArray = [1, 2, 3, 4, 5, 3, 6];
+        const valueToExclude = 3;
+        const newArray = arrayExcludesValueToNewArray(originalArray, valueToExclude);
+
+console.log(newArray); 
+    </script>
 </body>
 </html>
