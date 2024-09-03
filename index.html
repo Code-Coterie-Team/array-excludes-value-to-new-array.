@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(231, 136, 102);
+        }
+    </style>
 </head>
 <body>
     
     <script>
+
         function arrayExcludesValueToNewArray(originalArray, valueToExclude) {
-    return originalArray.filter(element => element !== valueToExclude);
-       }
+         return originalArray.filter(element => element !== valueToExclude);
+        }
+
         const originalArray = [1, 2, 3, 4, 5, 3, 6];
         const valueToExclude = 3;
         const newArray = arrayExcludesValueToNewArray(originalArray, valueToExclude);
 
-console.log(newArray); 
+         console.log(newArray); 
+         
     </script>
 </body>
 </html>
