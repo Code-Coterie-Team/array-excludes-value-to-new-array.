@@ -12,18 +12,48 @@
 </head>
 <body>
     
-    <script>
+    <label for="numberInput">Input 5 numbers (separated by commas):</label>
+    <input type="text" id="numberInput">
+    
+    <button onclick="submitNumbers()">Submit</button>
 
-        function arrayExcludesValueToNewArray(originalArray, valueToExclude) {
-         return originalArray.filter(element => element !== valueToExclude);
+    <label for="deleteInput" style="display:none;">Input number to delete:</label>
+    <input type="text" id="deleteInput" style="display:none;">
+    
+    <button onclick="deleteNumber()" id="deleteButton" style="display:none;">Delete</button>
+    
+    <script>
+        let originalArray = [];
+        
+        function submitNumbers() {
+            const input = document.getElementById('numberInput').value;
+            originalArray = input.split(',').map(Number);
+            
+            // Check if 5 numbers are entered
+            if (originalArray.length === 5) {
+                alert("Numbers submitted: " + originalArray);
+                
+                // Show the delete input
+                document.getElementById('deleteInput').style.display = 'block';
+                document.getElementById('deleteButton').style.display = 'block';
+            } else {
+                alert("Please enter exactly 5 numbers separated by commas.");
+            }
         }
 
-        const originalArray = [1, 2, 3, 4, 5, 3, 6];
-        const valueToExclude = 3;
-        const newArray = arrayExcludesValueToNewArray(originalArray, valueToExclude);
+        function deleteNumber() {
+            const valueToExclude = Number(document.getElementById('deleteInput').value);
+            const newArray = arrayExcludesValueToNewArray(originalArray, valueToExclude);
+            
+            console.log("Original array:", originalArray);
+            console.log("New array after deletion:", newArray);
+            alert("Updated array after deletion: " + newArray);
+        }
 
-         console.log(newArray); 
-         
+        function arrayExcludesValueToNewArray(originalArray, valueToExclude) {
+            return originalArray.filter(element => element !== valueToExclude);
+        }
     </script>
 </body>
+
 </html>
