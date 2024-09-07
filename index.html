@@ -23,38 +23,45 @@
     <button onclick="deleteNumber()" id="deleteButton" style="display:none;">Delete</button>
     
 
-    <script>
-        
-        let originalArray = [];
-        
-        function submitNumbers() {
-            const input = document.getElementById('numberInput').value;
-            originalArray = input.split(',').map(Number);
+
+     <script>
+                    let originalArray = [];
             
-            // Check if 5 numbers are entered
-            if (originalArray.length === 5) {
-                alert("Numbers submitted: " + originalArray);
+                  function submitNumbers() {
+                    const input = document.getElementById('numberInput').value;
+                      originalArray = input.split(',').map(Number);
                 
-                // Show the delete input
-                document.getElementById('deleteInput').style.display = 'block';
-                document.getElementById('deleteButton').style.display = 'block';
-            } else {
-                alert("Please enter exactly 5 numbers separated by commas.");
+                // Check if 5 numbers are entered
+                if (originalArray.length === 5) {
+                    alert("Numbers submitted: " + originalArray);
+                    
+                    // Show the delete input
+                    document.getElementById('deleteInput').style.display = 'block';
+                    document.getElementById('deleteButton').style.display = 'block';
+                } else {
+                    alert("Please enter exactly 5 numbers separated by commas.");
+                }
             }
-        }
-
-        function deleteNumber() {
-            const valueToExclude = Number(document.getElementById('deleteInput').value);
-            const newArray = arrayExcludesValueToNewArray(originalArray, valueToExclude);
+    
+                function deleteNumber() {
+                    const valueToExclude = Number(document.getElementById('deleteInput').value);
             
-            console.log("Original array:", originalArray);
-            console.log("New array after deletion:", newArray);
-            alert("Updated array after deletion: " + newArray);
-        }
-
-        function arrayExcludesValueToNewArray(originalArray, valueToExclude) {
-            return originalArray.filter(element => element !== valueToExclude);
-        }
+                    // Check if number exists in the original array
+                    if (!originalArray.includes(valueToExclude)) {
+                        alert("عدد " + valueToExclude + " در آرایه وجود ندارد.");
+                        return; // Exit the function if the number is not found
+                    }
+            
+                    const newArray = arrayExcludesValueToNewArray(originalArray, valueToExclude);
+                    
+                    console.log("Original array:", originalArray);
+                    console.log("New array after deletion:", newArray);
+                    alert("Updated array after deletion: " + newArray);
+                }
+    
+                        function arrayExcludesValueToNewArray(originalArray, valueToExclude) {
+                            return originalArray.filter(element => element !== valueToExclude);
+                        }
     </script>
 </body>
 
